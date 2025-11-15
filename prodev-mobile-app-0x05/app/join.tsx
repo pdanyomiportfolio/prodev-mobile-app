@@ -2,7 +2,7 @@ import { View, Text, TextInput, TouchableOpacity, Image } from "react-native";
 import { Link, useRouter } from "expo-router";
 import { styles } from "../styles/_join";
 
-export default function SignIn() {
+export default function Join() {
   const router = useRouter();
 
   return (
@@ -36,7 +36,7 @@ export default function SignIn() {
       </View>
 
       <TouchableOpacity style={styles.primaryButton}>
-        <Text style={styles.buttonText}>Create Account</Text>
+        <Text style={styles.buttonText}>Join now</Text>
       </TouchableOpacity>
 
       {/* social buttons and divider same as signin */}

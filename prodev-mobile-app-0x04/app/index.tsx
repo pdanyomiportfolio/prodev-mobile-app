@@ -1,120 +1,42 @@
-import React from "react";
-import {
-  Dimensions,
-  Image,
-  ImageBackground,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
-import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
+import { View, Text, ImageBackground, TouchableOpacity, Image } from "react-native";
+import { Link } from "expo-router";
+import { styles } from "../styles/_mainstyle";
 
-export default function Index() {
+export default function Home() {
   return (
-    <SafeAreaProvider>
-      <SafeAreaView style={{ flex: 1 }}>
-        <ImageBackground
-          source={require("@/assets/images/background-image.png")}
-          style={styles.background}
-          resizeMode="cover"
-        >
-          <View style={styles.container}>
-            {/* Company Logo */}
-            <View style={styles.companyLogo}>
-              <Image source={require("@/assets/images/Logo.png")} />
-            </View>
+    <View style={styles.container}>
+      <ImageBackground
+        source={require("../assets/images/splash.png")}
+        style={styles.backgroundImageContainer}
+      >
+        <View style={styles.logoContainer}>
+          <Image source={require("../assets/images/logo.png")} />
+        </View>
 
-            {/* Text Group */}
-            <View style={styles.textGroup}>
-              <Text style={styles.textLarge}>
-                Find your favorite place here
-              </Text>
-              <Text style={styles.textSmall}>The best prices for over 2 </Text>
-              <Text style={styles.textSmall}>million properties worldwide</Text>
-            </View>
+        <View style={styles.titleContainer}>
+          <Text style={styles.titleText}>Stay ahead with ALX</Text>
+        </View>
 
-            {/* Buttons and Navigation Prompt */}
-            <View style={{ position: "absolute", bottom: 0, width: "100%" }}>
-              <View style={styles.buttonGroup}>
-                <TouchableOpacity style={styles.button}>
-                  <Text style={{ ...styles.textSmall, color: "black" }}>
-                    Join here
-                  </Text>
-                </TouchableOpacity>
+        <View style={styles.titleSubTextContainer}>
+          <Text style={styles.titleSubText}>
+            Learn, grow, and transform your career with ALX programs.
+          </Text>
+        </View>
 
-                <TouchableOpacity style={styles.transparentButton}>
-                  <Text style={styles.textSmall}>Sign In</Text>
-                </TouchableOpacity>
-              </View>
+        <View style={styles.buttonGroup}>
+          <Link href="/join" asChild>
+            <TouchableOpacity style={styles.buttonPrimary}>
+              <Text style={styles.buttonPrimaryText}>Join now</Text>
+            </TouchableOpacity>
+          </Link>
 
-              <View style={{ alignItems: "center", paddingVertical: 20 }}>
-                <Text style={{ color: "white" }}>Continue to home</Text>
-              </View>
-            </View>
-          </View>
-        </ImageBackground>
-      </SafeAreaView>
-    </SafeAreaProvider>
+          <Link href="/signin" asChild>
+            <TouchableOpacity style={styles.buttonSecondary}>
+              <Text style={styles.buttonSecondaryText}>Sign in</Text>
+            </TouchableOpacity>
+          </Link>
+        </View>
+      </ImageBackground>
+    </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  background: {
-    flex: 1,
-    justifyContent: "center",
-    width: "100%",
-    height: Dimensions.get("window").height,
-  },
-  companyLogo: {
-    width: "100%",
-    alignItems: "center",
-    padding: 20,
-    marginBottom: 50,
-  },
-  textGroup: {
-    alignItems: "center",
-  },
-  textLarge: {
-    color: "white",
-    fontWeight: "800",
-    fontSize: 40,
-    textAlign: "center",
-    marginBottom: 12,
-  },
-  textSmall: {
-    color: "white",
-    fontSize: 18,
-    fontWeight: "200",
-    textAlign: "center",
-  },
-  transparentButton: {
-    borderColor: "white",
-    borderWidth: 2,
-    borderRadius: 40,
-    paddingVertical: 15,
-    paddingHorizontal: 5,
-    alignItems: "center",
-    fontSize: 20,
-    flex: 1,
-  },
-  button: {
-    borderColor: "white",
-    borderWidth: 2,
-    borderRadius: 40,
-    paddingVertical: 15,
-    paddingHorizontal: 5,
-    alignItems: "center",
-    fontSize: 20,
-    backgroundColor: "white",
-    flex: 1,
-  },
-  buttonGroup: {
-    flexDirection: "row",
-    gap: 20,
-    paddingHorizontal: 20,
-  },
-});
